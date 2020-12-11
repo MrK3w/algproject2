@@ -1,9 +1,7 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "Eccentricity.h"
 #include <iostream>
 #include <list>
-#include "Source.cpp"
-
+#include "LoadFile.h"
 
 void Eccentricity::FindGraphCenter()
 	{
@@ -123,6 +121,7 @@ void Eccentricity::FindGraphCenter()
 		int tmp = eccentricity_points[0];
 		for (int i = 1; i < number_of_nodes; i++)
 		{
+			//if lower value was found clear vector and save new value
 			if (tmp > eccentricity_points[i])
 			{
 				tmp = eccentricity_points[i];
@@ -130,16 +129,18 @@ void Eccentricity::FindGraphCenter()
 				centre_points.push_back(i);
 				continue;
 			}
+			//if same value was found push there another value
 			if (tmp == eccentricity_points[i]) centre_points.push_back(i);
 		}
 		std::cout << "Center points of graph are: ";
 		for (int i = 0; i < centre_points.size(); i++) std::cout << centre_points.at(i) << ' ';
 	}
 
-	//get eccentricity points from paths between nodes
+	//get eccentricity points from all paths between nodes
 	int* Eccentricity::get_eccentricity(std::vector<int> graph[], int number_of_nodes)
 	{
 		int* eccentricity_points = new int[number_of_nodes]();
+	    //find path to every node from one node and find longest path then save it
 		for (int i = 0; i < number_of_nodes; i++)
 		{
 			int* array = new int[number_of_nodes];
