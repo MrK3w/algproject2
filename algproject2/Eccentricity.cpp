@@ -25,7 +25,6 @@ void Eccentricity::FindGraphCenter()
 		eccentricity_points = get_eccentricity(graph, number_of_nodes);
 		find_centrer(eccentricity_points, number_of_nodes);
 }
-
 void Eccentricity::add_edge(std::vector<int> adj[], int src, int dest)
 {
 	adj[src].push_back(dest);
