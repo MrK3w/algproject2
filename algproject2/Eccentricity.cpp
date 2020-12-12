@@ -10,12 +10,12 @@ void Eccentricity::FindGraphCenter()
 		int number_of_nodes = File.GetNodes();
 		std::vector<int>* graph = new std::vector<int>[number_of_nodes];
 		int *src = new int[number_of_nodes]();
-		int *dest = new int[number_of_nodes]();
+		int* dest = new int[number_of_nodes]();
 		src = File.Getsrc();
 		dest = File.Getdest();
-		int i = File.getRows();
+		int rows = File.getRows();
 		int j = 0;
-	    while(j != i)
+	    while(j != rows)
 	    {
 		    add_edge(graph, src[j], dest[j]);
 			j++;
@@ -151,6 +151,7 @@ void Eccentricity::add_edge(std::vector<int> adj[], int src, int dest)
 			//if same value was found push there another value
 			if (tmp == eccentricity_points[i]) centre_points.push_back(i);
 		}
+		//write out Centrer points
 		std::cout << "Center points of graph are: ";
 		for (int i = 0; i < centre_points.size(); i++) std::cout << centre_points.at(i) << ' ';
 	}

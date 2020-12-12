@@ -14,8 +14,9 @@ public:
 	int* Getsrc();
 	int* Getdest();
 	int getRows();
-	int getI();
+	void setEdges();
 	void loadGraph();
+	void Defineedges();
 };
 
 

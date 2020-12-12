@@ -1,52 +1,70 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "FileLoader.h"
+
+
+#include <iostream>
+#include <string>
 FILE* file;
 int number_of_nodes = 0;
-int i = 0;
+int rows = 0;
 int* src;
 int* dest;
 
+//method for opening file
 void FileLoader::openFile()
 {
 	file = fopen("graf.txt", "r");
+	if(file == NULL)
+	{
+		std::cout << "File cannot be loaded";
+		exit(1);
+	}
 }
 
+//method for closing file
 void FileLoader::closeFile()
 {
 	fclose(file);
 }
 
+//method which returns row in file - first row
 int FileLoader::getRows()
 {
-	return i;
+	return rows;
 }
+//read first number in file which is number of nodes in graph
 void FileLoader::SetNodes()
 {
 	fscanf(file, "%d", &number_of_nodes);
 };
-
+//return number of nodes
 int FileLoader::GetNodes()
 {
 	return number_of_nodes;
 }
-
+//get source nodes
 int* FileLoader::Getsrc()
 {
 	return src;
 }
-
+//get destination nodes
 int* FileLoader::Getdest()
 {
 	return dest;
 }
-
-void setEdges()
+//define size of src and dest
+void FileLoader::Defineedges()
 {
 	src = new int[number_of_nodes]();
 	dest = new int[number_of_nodes]();
-	while ((fscanf(file, "%d %d\n", &src[i], &dest[i])) != EOF) i++;
 }
-
+//set edges 
+void FileLoader::setEdges()
+{
+	Defineedges();
+	while ((fscanf(file, "%d %d\n", &src[rows], &dest[rows])) != EOF) rows++;
+}
+//method for opening file setting everything needed and then close file 
 void FileLoader::loadGraph()
 {
 	
