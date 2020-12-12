@@ -1,16 +1,35 @@
 #include "Eccentricity.h"
 #include <iostream>
 #include <list>
-#include "LoadFile.h"
+#include "FileLoader.h"
 
 void Eccentricity::FindGraphCenter()
 	{
-		LoadFile File;
-		std::vector<int>* graph = File.loadGraph();
+		FileLoader File;
+		File.loadGraph();
 		int number_of_nodes = File.GetNodes();
+		std::vector<int>* graph = new std::vector<int>[number_of_nodes];
+		int *src = new int[number_of_nodes]();
+		int *dest = new int[number_of_nodes]();
+		src = File.Getsrc();
+		dest = File.Getdest();
+		int i = File.getRows();
+		int j = 0;
+	    while(j != i)
+	    {
+		    add_edge(graph, src[j], dest[j]);
+			j++;
+	    }
+
 		int* eccentricity_points = new int[number_of_nodes]();
 		eccentricity_points = get_eccentricity(graph, number_of_nodes);
-		find_centre(eccentricity_points, number_of_nodes);
+		find_centrer(eccentricity_points, number_of_nodes);
+}
+
+void Eccentricity::add_edge(std::vector<int> adj[], int src, int dest)
+{
+	adj[src].push_back(dest);
+	adj[dest].push_back(src);
 }
 // function to form edge between two vertices
 // source and dest
@@ -114,7 +133,7 @@ void Eccentricity::FindGraphCenter()
 	}
 
 	//finding the centre of the graph from eccentricity points
-	void Eccentricity::find_centre(int* eccentricity_points, int number_of_nodes)
+	void Eccentricity::find_centrer(int* eccentricity_points, int number_of_nodes)
 	{
 		std::vector<int> centre_points;
 		//lowest index of array eccentricty_points setted

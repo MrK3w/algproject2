@@ -4,17 +4,18 @@
 #include <cstdio>
 #include <vector>
 
-class LoadFile
+class FileLoader
 {
-private:
-
-	void add_edge(std::vector<int> adj[], int src, int dest);
 public:
 	void openFile();
 	void closeFile();
 	void SetNodes();
 	int GetNodes();
-	std::vector<int>* loadGraph();
+	int* Getsrc();
+	int* Getdest();
+	int getRows();
+	int getI();
+	void loadGraph();
 };
 
 

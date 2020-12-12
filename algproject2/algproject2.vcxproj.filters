@@ -21,7 +21,7 @@
     <ClCompile Include="Eccentricity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoadFile.cpp">
+    <ClCompile Include="FileLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="Eccentricity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LoadFile.h">
+    <ClInclude Include="FileLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
