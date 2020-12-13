@@ -4,15 +4,15 @@
 #include "FileLoader.h"
 
 void Eccentricity::findGraphCenter()
-	{
-		FileLoader File;
-		//read file
-		File.loadGraph();
-		int numberOfNodes = File.getNodes();
-		std::vector<int>* graph = setGraph(File, numberOfNodes);
-		int* eccentricityPoints = new int[numberOfNodes]();
-		eccentricityPoints = getEccentricity(graph, numberOfNodes);
-		findCenter(eccentricityPoints, numberOfNodes);
+{
+	FileLoader File;
+	//read file
+	File.loadGraph();
+	int numberOfNodes = File.getNodes();
+	std::vector<int>* graph = setGraph(File, numberOfNodes);
+	int* eccentricityPoints = new int[numberOfNodes]();
+	eccentricityPoints = getEccentricity(graph, numberOfNodes);
+	findCenter(eccentricityPoints, numberOfNodes);
 }
 
 std::vector<int>* Eccentricity::setGraph(FileLoader File, int numberOfNodes)
