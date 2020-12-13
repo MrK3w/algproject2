@@ -1,15 +1,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "FileLoader.h"
-
-
 #include <iostream>
 #include <string>
+
 FILE* file;
-int number_of_nodes = 0;
+int numberOfNodes = 0;
 int rows = 0;
 int* src;
 int* dest;
-
 //method for opening file
 void FileLoader::openFile()
 {
@@ -20,7 +18,6 @@ void FileLoader::openFile()
 		exit(1);
 	}
 }
-
 //method for closing file
 void FileLoader::closeFile()
 {
@@ -35,39 +32,38 @@ int FileLoader::getRows()
 //read first number in file which is number of nodes in graph
 void FileLoader::SetNodes()
 {
-	fscanf(file, "%d", &number_of_nodes);
+	fscanf(file, "%d", &numberOfNodes);
 };
 //return number of nodes
-int FileLoader::GetNodes()
+int FileLoader::getNodes()
 {
-	return number_of_nodes;
+	return numberOfNodes;
 }
 //get source nodes
-int* FileLoader::Getsrc()
+int* FileLoader::getSrc()
 {
 	return src;
 }
 //get destination nodes
-int* FileLoader::Getdest()
+int* FileLoader::getDest()
 {
 	return dest;
 }
 //define size of src and dest
-void FileLoader::Defineedges()
+void FileLoader::defineEdges()
 {
-	src = new int[number_of_nodes]();
-	dest = new int[number_of_nodes]();
+	src = new int[numberOfNodes]();
+	dest = new int[numberOfNodes]();
 }
 //set edges 
 void FileLoader::setEdges()
 {
-	Defineedges();
+	defineEdges();
 	while ((fscanf(file, "%d %d\n", &src[rows], &dest[rows])) != EOF) rows++;
 }
 //method for opening file setting everything needed and then close file 
 void FileLoader::loadGraph()
 {
-	
 	openFile();
 	SetNodes();
 	setEdges();

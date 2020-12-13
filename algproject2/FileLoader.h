@@ -1,22 +1,18 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
-
-#include <cstdio>
-#include <vector>
-
 class FileLoader
 {
 public:
+	void loadGraph();
+	int getNodes();
+	int* getSrc();
+	int* getDest();
+	int getRows();
+private:
 	void openFile();
 	void closeFile();
 	void SetNodes();
-	int GetNodes();
-	int* Getsrc();
-	int* Getdest();
-	int getRows();
 	void setEdges();
-	void loadGraph();
-	void Defineedges();
+	void defineEdges();
 };
 
 
