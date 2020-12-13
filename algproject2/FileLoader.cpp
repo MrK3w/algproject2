@@ -11,7 +11,7 @@ int* dest;
 //method for opening file
 void FileLoader::openFile()
 {
-	file = fopen("graf.txt", "r");
+	file = fopen("1.txt", "r");
 	if(file == NULL)
 	{
 		std::cout << "File cannot be loaded";

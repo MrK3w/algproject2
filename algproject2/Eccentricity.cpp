@@ -8,18 +8,15 @@ void Eccentricity::findGraphCenter()
 		FileLoader File;
 		//read file
 		File.loadGraph();
-		setGraph(File);
-		//get number of nodes in graph
 		int numberOfNodes = File.getNodes();
-		std::vector<int>* graph = setGraph(File);
+		std::vector<int>* graph = setGraph(File, numberOfNodes);
 		int* eccentricityPoints = new int[numberOfNodes]();
 		eccentricityPoints = getEccentricity(graph, numberOfNodes);
 		findCenter(eccentricityPoints, numberOfNodes);
 }
 
-std::vector<int>* Eccentricity::setGraph(FileLoader File)
+std::vector<int>* Eccentricity::setGraph(FileLoader File, int numberOfNodes)
 {
-	int numberOfNodes = File.getNodes();
 	std::vector<int>* graph = new std::vector<int>[numberOfNodes];
 	//set src and dest edges
 	int* src = new int[numberOfNodes]();
