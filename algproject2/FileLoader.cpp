@@ -4,7 +4,7 @@
 #include <string>
 
 FILE* file;
-int numberOfNodes = 0;
+int nodes = 0;
 int rows = 0;
 int* src;
 int* dest;
@@ -30,14 +30,14 @@ int FileLoader::getRows()
 	return rows;
 }
 //read first number in file which is number of nodes in graph
-void FileLoader::SetNodes()
+void FileLoader::setNodes()
 {
-	fscanf(file, "%d", &numberOfNodes);
+	fscanf(file, "%d", &nodes);
 };
 //return number of nodes
 int FileLoader::getNodes()
 {
-	return numberOfNodes;
+	return nodes;
 }
 //get source nodes
 int* FileLoader::getSrc()
@@ -52,8 +52,8 @@ int* FileLoader::getDest()
 //define size of src and dest
 void FileLoader::defineEdges()
 {
-	src = new int[numberOfNodes]();
-	dest = new int[numberOfNodes]();
+	src = new int[nodes]();
+	dest = new int[nodes]();
 }
 //set edges 
 void FileLoader::setEdges()
@@ -65,7 +65,7 @@ void FileLoader::setEdges()
 void FileLoader::loadGraph()
 {
 	openFile();
-	SetNodes();
+	setNodes();
 	setEdges();
 	closeFile();
 }
