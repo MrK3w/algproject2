@@ -22,12 +22,12 @@ void Eccentricity::setGraph(FileLoader File)
 {
 	graph = new std::vector<int>[numberOfNodes];
 	//set src and dest edges
-	int* src = new int[numberOfNodes]();
-	int* dest = new int[numberOfNodes]();
+	int rows = File.getRows();
+	int* src = new int[rows]();
+	int* dest = new int[rows]();
 	src = File.getSrc();
 	dest = File.getDest();
-	int rows = File.getRows();
-	int j = 0;
+		int j = 0;
 	while (j != rows)
 	{
 		addEdge(graph, src[j], dest[j]);
@@ -40,7 +40,7 @@ void Eccentricity::addEdge(std::vector<int> graph[], int src, int dest)
 	graph[src].push_back(dest);
 	graph[dest].push_back(src);
 }
-bool Eccentricity::BFS(std::vector<int> graph[], int src, int dest,int pred[], int dist[])
+bool Eccentricity::BFS(std::vector<int> graph[], int src, int dest, int pred[], int dist[])
 {
 	// a queue to maintain queue of vertices whose
 	// adjacency list is to be scanned as per normal
@@ -81,9 +81,9 @@ bool Eccentricity::BFS(std::vector<int> graph[], int src, int dest,int pred[], i
 				// We stop BFS when we find
 				// destination.
 				if (graph[u][i] == dest) return true;
-				}
 			}
 		}
+	}
 	return false;
 }
 
@@ -123,7 +123,7 @@ int Eccentricity::largestDistance(int arr[], int n)
 	{
 		if (arr[i] > max) max = arr[i];
 	}
-	return max;	
+	return max;
 }
 //finding the centre of the graph from eccentricity points
 void Eccentricity::findCenter(int* eccentricityPoints)
@@ -147,7 +147,7 @@ void Eccentricity::findCenter(int* eccentricityPoints)
 	//write out Centrer points
 	std::cout << "Center points of graph are: ";
 	for (int i = 0; i < centerPoints.size(); i++) std::cout << centerPoints.at(i) << ' ';
-	}
+}
 
 //get eccentricity points from all paths between nodes
 int* Eccentricity::getEccentricity(std::vector<int> graph[])

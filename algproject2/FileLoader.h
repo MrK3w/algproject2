@@ -3,7 +3,7 @@
 class FileLoader
 {
 public:
-///open file then set count of nodes and set edges
+///open file then set rows of nodes and set edges
 	void loadGraph();
 ///@return nodes
 	int getNodes();
@@ -25,6 +25,7 @@ private:
 	void setEdges();
 ///defining edges
 	void defineEdges();
+	void setRows();
 };
 
 
